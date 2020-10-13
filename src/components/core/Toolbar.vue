@@ -1,25 +1,14 @@
 <template v-slot:activator="{ on }">
-  <div>
-    <v-app-bar flat>
+  <div class="setSize">
+    <v-app-bar flat color="transparent">
       <span class="hidden-md-and-up">
         <v-app-bar-nav-icon @click="sidebar = !sidebar"></v-app-bar-nav-icon>
       </span>
       <div class="headline text-uppercase ml-0">
-        <div v-resize-text>
-          <router-link
-            :to="{ name: 'home' }"
-            tag="span"
-            style="cursor: pointer"
-            v-if="isTokenSet"
-            >{{ appTitle }}</router-link
-          >
-          <router-link
-            :to="{ name: 'landing' }"
-            tag="span"
-            style="cursor: pointer"
-            v-else
-            >{{ appTitle }}</router-link
-          >
+        <div v-resize-text class="">
+          <router-link :to="{ name: 'landing' }" tag="span" class="toLink">{{
+            appTitle.toLocaleUpperCase()
+          }}</router-link>
         </div>
       </div>
       <v-spacer></v-spacer>
@@ -31,8 +20,9 @@
           :to="{ name: item.link }"
           exact
           :class="['hidden-sm-and-down', item.class]"
+          class="setBorder"
         >
-          <v-icon>{{ item.icon }}</v-icon>
+          <v-icon class="mr-2">{{ item.icon }}</v-icon>
           &nbsp;{{ item.title }}
         </v-btn>
         <v-list-item class="hidden-sm-and-down">
@@ -80,7 +70,9 @@
     <v-navigation-drawer v-model="sidebar" absolute disable-resize-watcher>
       <v-list>
         <v-list-item>
-          <v-list-item-content>{{ appTitle }}</v-list-item-content>
+          <v-list-item-content class="red--text font-weight-bold">{{
+            appTitle.toLocaleUpperCase()
+          }}</v-list-item-content>
           <v-list-item-action>
             <v-btn icon @click.stop="sidebar = !sidebar">
               <v-icon>mdi-chevron-left</v-icon>
@@ -220,28 +212,39 @@ export default {
       ]
     },
     menuItems() {
-      if (this.isTokenSet) {
-        return [
-          {
-            title: this.$t('menuItems.HOME'),
-            link: 'home',
-            icon: 'mdi-home',
-            class: 'btnHome'
-          },
-          {
-            title: this.$t('menuItems.ABOUT'),
-            link: 'about',
-            icon: 'mdi-help-circle-outline',
-            class: 'btnAbout'
-          },
-          {
-            title: this.$t('menuItems.MY_PROFILE'),
-            link: 'profile',
-            icon: 'mdi-face',
-            class: 'btnProfile'
-          }
-        ]
-      }
+      return [
+        {
+          title: this.$t('menuItems.HOME'),
+          link: 'home',
+          icon: 'mdi-home',
+          class: 'btnHome'
+        },
+        {
+          title: this.$t('menuItems.ABOUT'),
+          link: 'about',
+          icon: 'mdi-help-circle-outline',
+          class: 'btnAbout'
+        },
+        {
+          title: this.$t('menuItems.NEWS'),
+          link: 'news',
+          icon: 'mdi-newspaper',
+          class: 'btnNews'
+        },
+        {
+          title: this.$t('menuItems.FOTO'),
+          link: 'fotos',
+          icon: 'mdi-image',
+          class: 'btnFoto'
+        },
+        {
+          title: this.$t('menuItems.CONTACT'),
+          link: 'contact',
+          icon: 'mdi-phone',
+          class: 'btnContact'
+        }
+      ]
+
       return [
         {
           title: this.$t('menuItems.HOME'),
@@ -286,3 +289,22 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.theme--light.v-btn--active:hover::before,
+.theme--light.v-btn--active::before {
+  opacity: 1;
+}
+a::before {
+  color: transparent;
+  border-bottom: 2px solid red;
+}
+.toLink {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}
+.setSize {
+  height: 64px;
+}
+</style>

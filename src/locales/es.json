@@ -51,6 +51,9 @@
   "menuItems": {
     "HOME": "Inicio",
     "ABOUT": "Acerca",
+    "NEWS": "Noticias",
+    "FOTO": "Fotos",
+    "VIDEO": "Videos",
     "MY_PROFILE": "Mi Perfil",
     "SIGNUP": "Registro",
     "LOGIN": "Ingresar",
@@ -101,8 +104,8 @@
     "CONFIRM_PASSWORD": "Confirmar Contraseña"
   },
   "landing": {
-    "TITLE": "Página de aterrizaje",
-    "DESCRIPTION": "Esta página está disponible públicamente",
+    "TITLE": "Javaloyas",
+    "DESCRIPTION": " Veterano de los grupos pop españoles, y aún activos!",
     "BUY_ME_A_COFFEE": "Cómprame un café",
     "BUY_ME_A_COFFEE_DESCRIPTION": "Estoy haciendo lo mejor para proveer una buena experiencia cuando uses mis aplicaciones, así que si te gusta lo que estoy haciendo y quieres decir \"¡gracias!\", por favor haz click en el botón y cómprame un café.",
     "DESCRIPTION_VUE": "Este proyecto fue creado para ayudar a que otros desarrolladores web construyan una app básica en VueJS.",
@@ -119,8 +122,8 @@
     "CLOSE": "Cerrar"
   },
   "about": {
-    "TITLE": "Acerca de...",
-    "DESCRIPTION": "Esta página está disponible públicamente."
+    "TITLE": "LOS JAVALOYAS",
+    "DESCRIPTION": "desde 1952"
   },
   "login": {
     "TITLE": "Ingresar",
@@ -171,5 +174,9 @@
     "COUNTRY": "País",
     "SAVE": "Guardar",
     "PROFILE_SAVED_SUCCESSFULLY": "Perfil guardado exitosamente"
+  },
+  "buttons": {
+    "CONTACT": "Contactar",
+    "AGENDA" : "Agenda"
   }
 }

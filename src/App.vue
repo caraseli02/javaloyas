@@ -1,16 +1,47 @@
 <template>
-  <v-app>
-    <Toolbar />
-    <v-content class="text-center">
-      <loading />
-      <v-container fluid>
-        <transition name="fade" mode="out-in">
-          <router-view />
-        </transition>
-      </v-container>
-    </v-content>
-    <Footer />
-  </v-app>
+  <section class="bgEfect">
+    <v-app>
+      <Toolbar />
+      <v-speed-dial
+        v-model="dialShare"
+        absolute
+        right
+        top
+        class="mt-14 mr-6"
+        direction="left"
+        open-on-hover
+      >
+        <template v-slot:activator>
+          <v-btn fab bottom small color="">
+            <v-icon v-if="dialShare">mdi-close</v-icon>
+            <v-icon v-else>mdi-share-variant</v-icon>
+          </v-btn>
+        </template>
+        <v-btn
+          v-for="item in media"
+          :key="item.name"
+          dark
+          fab
+          bottom
+          :color="item.color"
+          small
+          :href="item.url"
+          target="_blank"
+        >
+          <v-icon>{{ item.name }}</v-icon>
+        </v-btn>
+      </v-speed-dial>
+      <v-content class="text-center">
+        <loading />
+        <v-main fluid>
+          <transition name="fade" mode="out-in">
+            <router-view />
+          </transition>
+        </v-main>
+      </v-content>
+      <Footer />
+    </v-app>
+  </section>
 </template>
 
 <script>
@@ -59,6 +90,25 @@ export default {
       ]
     }
   },
+  data() {
+    return {
+      dialShare: false,
+      media: [
+        {
+          name: 'mdi-whatsapp',
+          url: 'https://wa.me/1XXXXXXXXXX',
+          color: 'green'
+        },
+        {
+          name: 'mdi-facebook',
+          url: 'https://wa.me/1XXXXXXXXXX',
+          color: 'blue'
+        },
+        { name: 'mdi-gmail', url: 'https://wa.me/1XXXXXXXXXX', color: 'red' },
+        { name: 'mdi-phone', url: 'https://wa.me/1XXXXXXXXXX', color: 'teal' }
+      ]
+    }
+  },
   components: {
     Toolbar,
     Loading,
@@ -81,5 +131,25 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.setGradient {
+  background: linear-gradient(
+    325deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 42%,
+    rgba(255, 255, 255, 1) 42%,
+    rgba(255, 255, 255, 1) 42%
+  );
+}
+
+.setGradientBlack {
+  background: linear-gradient(
+    325deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 36%,
+    rgba(0, 0, 0, 1) 36%,
+    rgba(0, 0, 0, 1) 36%
+  );
 }
 </style>
